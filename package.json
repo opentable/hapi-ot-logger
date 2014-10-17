@@ -1,0 +1,33 @@
+{
+  "name": "hapi-ot-logger",
+  "version": "1.0.0",
+  "description": "logger conforming to ot standards",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:opentable/hapi-ot-logger.git"
+  },
+  "keywords": [
+    "hapi"
+  ],
+  "author": "Andy Royle <ajroyle@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/opentable/hapi-ot-logger/issues"
+  },
+  "homepage": "https://github.com/opentable/hapi-ot-logger",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-mocha-test": "^0.10.2",
+    "should": "^3.3.1"
+  },
+  "dependencies": {
+    "redis": "^0.12.1"
+  }
+}
