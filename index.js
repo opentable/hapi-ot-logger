@@ -11,8 +11,8 @@ exports.register = function (plugin, options, next) {
         logger.log(event);
       });
 
-      plugin.events.on('internalError', function(event){
-        logger.error(event);
+      plugin.events.on('internalError', function(request, err){
+        logger.error(request, err);
       });
 
       plugin.log(["logging"], "logging to: " + options.redis.host);
