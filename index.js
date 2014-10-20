@@ -3,7 +3,7 @@ var logger = require('./lib/logger');
 exports.register = function (plugin, options, next) {
 
     logger.config(options);
-
+    
     plugin.events.on('tail', function(request){
       logger.request(request);
     });
