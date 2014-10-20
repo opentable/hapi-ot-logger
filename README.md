@@ -21,25 +21,26 @@ server.pack.register([
     plugin: require('hapi-ot-logger'),
     options: {
       servicetype: "myservice",
-      versions: {
-        request: 'v1',
-        log: 'v1',
-        error: 'v1'
+      versions: { // defaults to v1
+        request: 'v2',
+        log: 'v3',
+        error: 'v2'
       },
       redis: {
         host: '127.0.0.1',
         port: 6379,
         listname: 'logs'
-      }
+      },
+      console: true // optional console output for debugging, defaults to false
     }
   }], function(err){
-  if(err){
-    throw err;
-  }
+    if(err){
+      throw err;
+    }
 
-  server.start(function(){
-    server.log('server started');
-  });
+    server.start(function(){
+      server.log('server started');
+    });
 });
 
 ```
