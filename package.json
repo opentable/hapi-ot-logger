@@ -22,12 +22,14 @@
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
     "grunt-mocha-test": "^0.10.2",
+    "joi": "^4.7.0",
     "should": "^3.3.1"
   },
   "dependencies": {
+    "hoek": "^2.7.0",
     "json-stringify-safe": "^5.0.0",
     "redis": "^0.12.1"
   }
