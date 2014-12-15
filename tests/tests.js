@@ -9,10 +9,8 @@ describe('logger tests', function(){
   var options;
   var discon = false;
   var p = {
-    events: {
-      on: function(type, handler){
+    on: function(type, handler){
         events.push({ type: type, handler: handler })
-      }
     },
     log: function(){}
   };

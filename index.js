@@ -1,21 +1,21 @@
 var logger = require('./lib/logger');
 
-exports.register = function (plugin, options, next) {
+exports.register = function (server, options, next) {
 
     logger.config(options, function(){
-      plugin.events.on('tail', function(request){
+      server.on('tail', function(request){
         logger.request(request);
       });
 
-      plugin.events.on('log', function(event){
+      server.on('log', function(event){
         logger.log(event);
       });
 
-      plugin.events.on('internalError', function(request, err){
+      server.on('internalError', function(request, err){
         logger.error(request, err);
       });
 
-      plugin.log(["logging"], "logging to: " + options.redis.host);
+      server.log(["logging"], "logging to: " + options.redis.host);
 
       next();
     });
