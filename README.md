@@ -31,7 +31,8 @@ server.pack.register([
         port: 6379,
         listname: 'logs'
       },
-      console: true // optional console output for debugging, defaults to false
+      console: true // optional console output for debugging, default: false
+      payload: false // include the request payload (request.payload stringified), default: false
     }
   }], function(err){
     if(err){
@@ -44,7 +45,3 @@ server.pack.register([
 });
 
 ```
-
-Future plans:
-
-- Add kafka support
