@@ -44,7 +44,8 @@ describe('logger tests', function(){
       options = {
         redis: {
           port: remoteServer.address().port
-        }
+        },
+        payload: true
       };
       done();
     });
@@ -92,6 +93,43 @@ describe('logger tests', function(){
     }, 10);
   });
 
+  it('should include the body from a PUT/POST request', function(done){
+    events[0].handler({
+      method: 'post',
+      path: '/foo',
+      query: {
+        flarg: 'glarg'
+      },
+      payload: {
+        foo: 'bar',
+        baz: { flarg: 'glarg' }
+      },
+      response: {
+        statusCode: 200
+      },
+      info: {
+        received: Date.now()
+      },
+      getLog: function(){ return []; },
+      headers: {
+        "ot-requestid": "abcd-1234-abcd-1234",
+        "user-agent": "tests",
+        "ot-userid": "user1234",
+        "ot-sessionid": "1234-abcd-1234-abcd",
+        "ot-referringhost": "referringhost",
+        "ot-referringservice": "referringservice",
+        "accept-language": "en-GB,en;q=0.8"
+      }
+    });
+
+    setTimeout(function(){
+      joi.validate(logs[1], schema.request, function(err){
+        logs[1].payload.should.equal('{"foo":"bar","baz":{"flarg":"glarg"}}');
+        done(err);
+      });
+    }, 10);
+  });
+
   it('should handle a log', function(done){
     events[1].handler({
       data: {
@@ -101,7 +139,7 @@ describe('logger tests', function(){
     });
 
     setTimeout(function(){
-      joi.validate(logs[1], schema.log, function(err){
+      joi.validate(logs[2], schema.log, function(err){
         done(err);
       });
     }, 10);
@@ -113,7 +151,7 @@ describe('logger tests', function(){
     });
 
     setTimeout(function(){
-      joi.validate(logs[2], schema.error, function(err){
+      joi.validate(logs[3], schema.error, function(err){
         done(err);
       });
     }, 10);

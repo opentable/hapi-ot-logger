@@ -12,11 +12,12 @@ module.exports.request = joi.object({
   duration: joi.number().integer().required(),
   durationMilliseconds: joi.number().integer().required(),
   events: joi.array().required(),
-  method: joi.string().valid('get').required(),
+  method: joi.string().valid(['get', 'post', 'put']).required(),
   url: joi.string().valid('/foo').required(),
   query: joi.object({
     flarg: joi.string().valid('glarg').required()
   }).required(),
+  payload: joi.string(),
 
   "ot-requestid": joi.string().valid("abcd-1234-abcd-1234").required(),
   "user-agent": joi.string().valid("tests").required(),
