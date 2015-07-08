@@ -1,6 +1,6 @@
 {
   "name": "hapi-ot-logger",
-  "version": "2.1.1",
+  "version": "2.1.22",
   "description": "logger conforming to ot standards",
   "main": "index.js",
   "scripts": {
