@@ -8,8 +8,8 @@ describe('Verify Package.json', function() {
     });
   });
   describe('Verify current version', function(){
-    it('Should be 2.1.22', function(){
-      pkg.version.should.be.equal('2.1.22');
+    it('Should be 2.1.23', function(){
+      pkg.version.should.be.equal('2.1.23');
     });
   });
   describe('Verify peerDependencies', function(){
