@@ -1,6 +1,6 @@
 {
   "name": "hapi-ot-logger",
-  "version": "2.1.22",
+  "version": "2.1.23",
   "description": "logger conforming to ot standards",
   "main": "index.js",
   "scripts": {
@@ -35,6 +35,6 @@
     "redis": "^0.12.1"
   },
   "peerDependencies": {
-    "hapi": "^8.0.0"
+    "hapi": "^9.0.0"
   }
 }
