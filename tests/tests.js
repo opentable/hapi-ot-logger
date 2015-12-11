@@ -46,8 +46,8 @@ describe('logger tests', function(){
           port: remoteServer.address().port
         },
         payload: true,
-        validate: function(req) {
-          return req.headers['user-agent'] !== 'spider';
+        validate: function(log) {
+          return log.logname === 'request' && log.headers['user-agent'] !== 'spider';
         }
       };
       done();

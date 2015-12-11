@@ -35,8 +35,8 @@ server.pack.register([
       },
       console: true, // optional console output for debugging, default: false
       payload: false, // include the request payload (request.payload stringified), default: false
-      validate: function(req) { // validates that a request should be logged (default to always valid)
-        return req.headers['user-agent'] !== 'noisy-spider';
+      validate: function(log) { // validates that a message should be logged (default to always valid)
+        return log.logname === 'request' && log.headers['user-agent'] !== 'noisy-spider';
       }
     }
   }], function(err){
