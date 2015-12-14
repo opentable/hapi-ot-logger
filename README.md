@@ -7,11 +7,13 @@ Currently only supports redis.
 
 installation:
 
-```npm install hapi-ot-logger```
+```shell
+npm install hapi-ot-logger
+```
 
 usage:
 
-```
+```javascript
 var hapi = require("hapi");
 
 var server = Hapi.createServer('127.0.0.1', 3000, {});
@@ -31,8 +33,11 @@ server.pack.register([
         port: 6379,
         listname: 'logs'
       },
-      console: true // optional console output for debugging, default: false
-      payload: false // include the request payload (request.payload stringified), default: false
+      console: true, // optional console output for debugging, default: false
+      payload: false, // include the request payload (request.payload stringified), default: false
+      validate: function(log) { // validates that a message should be logged (default to always valid)
+        return log.logname === 'request' && log.headers['user-agent'] !== 'noisy-spider';
+      }
     }
   }], function(err){
     if(err){
