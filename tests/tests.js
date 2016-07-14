@@ -1,6 +1,8 @@
+'use strict';
+
 describe('logger tests', function(){
   var net = require('net');
-  var should = require('should');
+  var should = require('should'); // eslint-disable-line no-unused-vars
   var plugin = require('../index');
   var schema = require('./schema');
   var joi = require('joi');

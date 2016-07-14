@@ -1,0 +1,12 @@
+---
+"extends":
+  - "defaults"
+
+"rules":
+  "no-console": 0
+  "strict": 1
+
+"env":
+  "es6": false
+  "mocha": true
+  "node": true
