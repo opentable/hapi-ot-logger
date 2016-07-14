@@ -1,23 +1,25 @@
-var logger = require('./lib/logger');
+'use strict';
 
-exports.register = function (server, options, next) {
+const logger = require('./lib/logger');
 
-    logger.config(options, function(){
-      server.on('tail', function(request){
-        logger.request(request);
-      });
+exports.register = (server, options, next) => {
 
-      server.on('log', function(event){
-        logger.log(event);
-      });
+    logger.config(options, () => {
+        server.on('tail', request => {
+            logger.request(request);
+        });
 
-      server.on('internalError', function(request, err){
-        logger.error(request, err);
-      });
+        server.on('log', event => {
+            logger.log(event);
+        });
 
-      server.log(["logging"], "logging to: " + options.redis.host);
+        server.on('internalError', (request, err) => {
+            logger.error(request, err);
+        });
 
-      next();
+        server.log(['logging'], 'logging to: ' + options.redis.host);
+
+        next();
     });
 };
 
