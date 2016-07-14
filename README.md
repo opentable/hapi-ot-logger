@@ -44,7 +44,7 @@ server.pack.register([
       throw err;
     }
 
-    server.start(function(){
+    server.start(() =>{
       server.log('server started');
     });
 });
