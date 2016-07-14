@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/opentable/hapi-ot-logger",
   "dependencies": {
+    "eslint": "^2.13.1",
     "hoek": "^4.0.1",
     "json-stringify-safe": "^5.0.0",
     "lodash.once": "^3.0.0",
