@@ -4,7 +4,8 @@
   "description": "logger conforming to ot standards",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "lint": "eslint ./",
+    "test": "npm run lint && mocha ./tests --reporter spec --timeout 5s"
   },
   "repository": {
     "type": "git",
@@ -20,15 +21,13 @@
   },
   "homepage": "https://github.com/opentable/hapi-ot-logger",
   "devDependencies": {
-    "grunt": "^0.4.4",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-mocha-test": "^0.10.2",
     "joi": "^4.7.0",
+    "mocha": "^2.5.3",
     "should": "^3.3.1"
   },
   "dependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-defaults": "^9.0.0",
     "hoek": "^2.7.0",
     "json-stringify-safe": "^5.0.0",
     "lodash.once": "^3.0.0",

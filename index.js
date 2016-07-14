@@ -1,3 +1,5 @@
+'use strict';
+
 var logger = require('./lib/logger');
 
 exports.register = function (server, options, next) {
