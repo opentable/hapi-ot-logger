@@ -2,7 +2,7 @@
 
 describe('logger tests', () =>{
     const net = require('net');
-    let should = require('should');
+    let should = require('should');  // eslint-disable-line no-unused-vars
     const plugin = require('../index');
     const schema = require('./schema');
     const joi = require('joi');
@@ -16,8 +16,6 @@ describe('logger tests', () =>{
         },
         log: () =>{}
     };
-
-    should=should;
 
     const remoteServer = net.createServer(c => {
         c.on('data', data => {
