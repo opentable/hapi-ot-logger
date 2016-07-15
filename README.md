@@ -1,52 +1,64 @@
-#Hapi-ot-logger
-[![Build Status](https://travis-ci.org/opentable/hapi-ot-logger.png?branch=master)](https://travis-ci.org/opentable/hapi-ot-logger) [![NPM version](https://badge.fury.io/js/hapi-ot-logger.png)](http://badge.fury.io/js/hapi-ot-logger) ![Dependencies](https://david-dm.org/opentable/hapi-ot-logger.png)
+# hapi-ot-logger
+> OpenTable standard-compliant logging plugin for Hapi.
 
-Hapi plugin for ot-logging standards.
+[![Build Status](https://travis-ci.org/opentable/hapi-ot-logger.png?branch=master)](https://travis-ci.org/opentable/hapi-ot-logger) [![Dependency Status](https://david-dm.org/opentable/hapi-ot-logger.svg)](https://david-dm.org/opentable/hapi-ot-logger) [![NPM version](https://badge.fury.io/js/hapi-ot-logger.png)](http://badge.fury.io/js/hapi-ot-logger)
 
-Currently only supports redis.
+[![NPM](https://nodei.co/npm/hapi-ot-logger.png?downloads=true&stars=true)](https://nodei.co/npm/hapi-ot-logger)
 
-installation:
-
-```shell
-npm install hapi-ot-logger
+## Usage
+```
+$ npm i hapi-ot-logger --save
 ```
 
-usage:
+```
+var server = new (require('hapi').Server)();
+server.connection({ port: 3000 });
 
-```javascript
-var hapi = require("hapi");
-
-var server = Hapi.createServer('127.0.0.1', 3000, {});
-
-server.pack.register([
-  {
-    plugin: require('hapi-ot-logger'),
-    options: {
-      servicetype: "myservice",
-      versions: { // defaults to v1
-        request: 'v2',
-        log: 'v3',
-        error: 'v2'
-      },
-      redis: {
-        host: '127.0.0.1',
-        port: 6379,
-        listname: 'logs'
-      },
-      console: true, // optional console output for debugging, default: false
-      payload: false, // include the request payload (request.payload stringified), default: false
-      validate: function(log) { // validates that a message should be logged (default to always valid)
-        return log.logname === 'request' && log.headers['user-agent'] !== 'noisy-spider';
-      }
+server.register([
+    {
+        register: require('hapi-ot-logger'),
+        options: {
+          servicetype: "myservice",
+          versions: {
+            request: 'v2',
+            log: 'v3',
+            error: 'v2'
+          },
+          redis: {
+            host: '127.0.0.1',
+            port: 6379,
+            listname: 'logs'
+          },
+          console: true,
+          payload: false,
+          validate: function(log) {
+            return log.logname === 'request' && log.headers['user-agent'] !== 'noisy-spider';
+          }
+        }
     }
-  }], function(err){
-    if(err){
-      throw err;
+], function (err) {
+    if (err) {
+        console.error('Failed to load plugin:', err);
     }
 
-    server.start(function(){
-      server.log('server started');
-    });
+    server.start();
 });
-
 ```
+
+## Configuration
+- **servicetype** - unique service type
+- **versions** -  
+    - **request** - request log version
+    - **log** - diagnostic log version
+    - **error** - error log version
+- **redis**
+    - **host** - redis server hostname or IP address
+    - **port** - redis server port
+    - **listname** - redis list name
+- **console** - *(optional)* enable console output for debugging
+- **payload** - *(optional)* include request payload
+- **validate** - *(optional)* validates that a message should be logged
+
+## Release History
+- **v3.0.0** (2015-11-14)
+    - ???
