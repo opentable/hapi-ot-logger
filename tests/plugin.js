@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('expect.js');
-var plugin = require('../index.js');
+var plugin = require('../index');
 var server = {
     events: [],
     on: function(name, handler) {
