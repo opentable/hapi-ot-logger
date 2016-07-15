@@ -140,5 +140,9 @@ describe('logger configuration', function() {
         it('should set host to OS hostname', function() {
             expect(cfg.host).to.equal(os.hostname());
         });
+        
+        it('should set validation function', function() {
+            expect(cfg.validate).to.not.be(null);
+        });
     });
 });
