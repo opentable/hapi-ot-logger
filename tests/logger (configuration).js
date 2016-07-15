@@ -4,7 +4,7 @@ var expect = require('expect.js');
 var os = require("os");
 var rewire = require('rewire');
 
-describe('logger configuration', function() {
+describe('logger (configuration)', function() {
     describe('when configured with defaults', function() {
         var cfg
         var redisClient
@@ -140,7 +140,7 @@ describe('logger configuration', function() {
         it('should set host to OS hostname', function() {
             expect(cfg.host).to.equal(os.hostname());
         });
-        
+
         it('should set validation function', function() {
             expect(cfg.validate).to.not.be(null);
         });
