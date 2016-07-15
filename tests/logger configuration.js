@@ -4,7 +4,7 @@ var expect = require('expect.js');
 var os = require("os");
 var rewire = require('rewire');
 
-describe('logger', function() {
+describe('logger configuration', function() {
     describe('when configured with defaults', function() {
         var cfg
         var redisClient
