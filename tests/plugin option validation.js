@@ -2,9 +2,8 @@
 
 var expect = require('expect.js');
 var hoek = require('hoek');
-var plugin = require('../index.js');
+var plugin = require('../index');
 var server = {
-    log: function() {},
     on: function() {}
 };
 var validConfig = {

@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('expect.js');
-var plugin = require('../index.js');
+var plugin = require('../index');
 
 describe('plugin attributes', function() {
     it('should contain name', function() {
