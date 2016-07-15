@@ -44,9 +44,18 @@ describe('logger tests', function(){
     before(function(done){
         remoteServer.listen(function () {
             options = {
-                redis: {
-                    port: remoteServer.address().port
+                servicetype: "myservice",
+                versions: {
+                    request: 'v1',
+                    log: 'v2',
+                    error: 'v3'
                 },
+                redis: {
+                    host: '127.0.0.1',
+                    port: remoteServer.address().port,
+                    listname: 'logs'
+                },
+                console: false,
                 payload: true,
                 validate: function(log) {
                     return log.logname === 'request' && log.headers['user-agent'] !== 'spider';
