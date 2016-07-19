@@ -17,23 +17,25 @@ describe('logger (error logging)', function() {
             logger.config({
                 console: true,
                 payload: true
-            }, done);
+            }, function() {
+                cfg = logger.__get__("cfg");
 
-            cfg = logger.__get__("cfg");
+                logger.__set__('consoleWriter', {
+                    log: function(_consoleEntry) {
+                        consoleEntry = _consoleEntry;
+                    }
+                });
 
-            logger.__set__('consoleWriter', {
-                log: function(_consoleEntry) {
-                    consoleEntry = _consoleEntry;
-                }
+                logger.__set__('client', {
+                    rpush: function(listname, _logEntry) {
+                        logEntry = _logEntry;
+                    }
+                });
+
+                logger.error({}, new Error('test'));
+
+                done();
             });
-
-            logger.__set__('client', {
-                rpush: function(listname, _logEntry) {
-                    logEntry = _logEntry;
-                }
-            });
-
-            logger.error({}, new Error('test'));
         });
 
         it('should push error log to redis', function() {

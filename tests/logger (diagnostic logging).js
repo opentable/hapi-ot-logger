@@ -17,25 +17,27 @@ describe('logger (diagnostic logging)', function() {
             logger.config({
                 console: true,
                 payload: true
-            }, done);
+            }, function() {
+                cfg = logger.__get__("cfg");
 
-            cfg = logger.__get__("cfg");
+                logger.__set__('consoleWriter', {
+                    log: function(_consoleEntry) {
+                        consoleEntry = _consoleEntry;
+                    }
+                });
 
-            logger.__set__('consoleWriter', {
-                log: function(_consoleEntry) {
-                    consoleEntry = _consoleEntry;
-                }
-            });
+                logger.__set__('client', {
+                    rpush: function(listname, _logEntry) {
+                        logEntry = _logEntry;
+                    }
+                });
 
-            logger.__set__('client', {
-                rpush: function(listname, _logEntry) {
-                    logEntry = _logEntry;
-                }
-            });
+                logger.log({
+                    data: {},
+                    tags: ['tag']
+                });
 
-            logger.log({
-                data: {},
-                tags: ['tag']
+                done();
             });
         });
 
