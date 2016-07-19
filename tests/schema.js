@@ -3,32 +3,33 @@
 var joi = require('joi');
 
 module.exports.request = joi.object({
-    "@timestamp": joi.date().required(),
+    '@timestamp': joi.date().required(),
     servicetype: joi.string().valid('myservice').required(),
     logname: joi.string().valid('request').required(),
     formatversion: joi.string().valid('v1').required(),
     type: joi.string().valid('myservice-request-v1').required(),
     host: joi.string().required(),
     sequencenumber: joi.number().integer().min(0).required(),
+    method: joi.string().valid(['get', 'post', 'put']).required(),
+    url: joi.string().valid('/foo').required(),
+    query: joi.object({
+        active: joi.boolean().required(),
+        ids: joi.array().required()
+    }).required(),
     status: joi.number().valid(200).required(),
     duration: joi.number().integer().required(),
     durationMilliseconds: joi.number().integer().required(),
     events: joi.array().required(),
-    method: joi.string().valid(['get', 'post', 'put']).required(),
-    url: joi.string().valid('/foo').required(),
-    query: joi.object({
-        flarg: joi.string().valid('glarg').required()
-    }).required(),
     payload: joi.string(),
 
-    "ot-requestid": joi.string().valid("abcd-1234-abcd-1234").required(),
-    "user-agent": joi.string().valid("tests").required(),
-    "ot-userid": joi.string().valid("user1234").required(),
-    "ot-sessionid": joi.string().valid("1234-abcd-1234-abcd").required(),
-    "ot-referringhost": joi.string().valid("referringhost").required(),
-    "ot-referringservice": joi.string().valid("referringservice").required(),
-    "accept-language": joi.string().valid("en-GB,en;q=0.8").required(),
-    headers: joi.object()
+    "ot-requestid": joi.string().valid("67c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce").required(),
+    "user-agent": joi.string().valid("ot").required(),
+    "ot-userid": joi.string().valid("12c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce").required(),
+    "ot-sessionid": joi.string().valid("34c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce").required(),
+    "ot-referringhost": joi.string().valid("oc").required(),
+    "ot-referringservice": joi.string().valid("listing").required(),
+    "accept-language": joi.string().valid("en-US, *").required(),
+    headers: joi.object().required()
 });
 
 module.exports.log = joi.object({

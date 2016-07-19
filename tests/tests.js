@@ -83,7 +83,8 @@ describe('logger tests', function(){
                 method: 'get',
                 path: '/foo',
                 query: {
-                    flarg: 'glarg'
+                    active: true,
+                    ids: [1, 2, 3]
                 },
                 response: {
                     statusCode: 200
@@ -93,13 +94,13 @@ describe('logger tests', function(){
                 },
                 getLog: function(){ return []; },
                 headers: {
-                    "ot-requestid": "abcd-1234-abcd-1234",
-                    "user-agent": "tests",
-                    "ot-userid": "user1234",
-                    "ot-sessionid": "1234-abcd-1234-abcd",
-                    "ot-referringhost": "referringhost",
-                    "ot-referringservice": "referringservice",
-                    "accept-language": "en-GB,en;q=0.8"
+                    'ot-requestid': '67c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce',
+                    'user-agent': 'ot',
+                    'ot-userid': '12c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce',
+                    'ot-sessionid': '34c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce',
+                    'ot-referringhost': 'oc',
+                    'ot-referringservice': 'listing',
+                    'accept-language': 'en-US, *'
                 }
             });
 
@@ -115,7 +116,8 @@ describe('logger tests', function(){
                 method: 'post',
                 path: '/foo',
                 query: {
-                    flarg: 'glarg'
+                    active: true,
+                    ids: [1, 2, 3]
                 },
                 payload: {
                     foo: 'bar',
@@ -129,13 +131,13 @@ describe('logger tests', function(){
                 },
                 getLog: function(){ return []; },
                 headers: {
-                    "ot-requestid": "abcd-1234-abcd-1234",
-                    "user-agent": "tests",
-                    "ot-userid": "user1234",
-                    "ot-sessionid": "1234-abcd-1234-abcd",
-                    "ot-referringhost": "referringhost",
-                    "ot-referringservice": "referringservice",
-                    "accept-language": "en-GB,en;q=0.8"
+                    'ot-requestid': '67c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce',
+                    'user-agent': 'ot',
+                    'ot-userid': '12c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce',
+                    'ot-sessionid': '34c07bb9-8ad8-4bc2-848f-3cc3a2fb92ce',
+                    'ot-referringhost': 'oc',
+                    'ot-referringservice': 'listing',
+                    'accept-language': 'en-US, *'
                 }
             });
 
