@@ -27,7 +27,7 @@ var config = {
     }
 };
 
-describe('plugin', function() {
+describe('plugin (registration)', function() {
     describe('when registered', function() {
         before(function(done) {
             plugin.register(server, config, done);
