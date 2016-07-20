@@ -31,7 +31,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { servicetype: null }, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: servicetype must be a string');
+                expect(err.toString()).to.equal('ValidationError: child "servicetype" fails because ["servicetype" must be a string]');
                 done();
             });
         });
@@ -42,7 +42,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { servicetype: '' }, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: servicetype is not allowed to be empty');
+                expect(err.toString()).to.equal('ValidationError: child "servicetype" fails because ["servicetype" is not allowed to be empty]');
                 done();
             });
         });
@@ -53,7 +53,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { versions: null }, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: versions must be an object');
+                expect(err.toString()).to.equal('ValidationError: child "versions" fails because ["versions" must be an object]');
                 done();
             });
         });
@@ -64,7 +64,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { versions:{ request: 1, log: 'v2', error: 'v3' }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: request must be a string');
+                expect(err.toString()).to.equal('ValidationError: child "versions" fails because [child "request" fails because ["request" must be a string]]');
                 done();
             });
         });
@@ -75,7 +75,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { versions:{ request: 'v1', log: 2, error: 'v3' }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: log must be a string');
+                expect(err.toString()).to.equal('ValidationError: child "versions" fails because [child "log" fails because ["log" must be a string]]');
                 done();
             });
         });
@@ -86,7 +86,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { versions:{ request: 'v1', log: 'v2', error: 3 }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: error must be a string');
+                expect(err.toString()).to.equal('ValidationError: child "versions" fails because [child "error" fails because ["error" must be a string]]');
                 done();
             });
         });
@@ -97,7 +97,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { redis: null }, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: redis must be an object');
+                expect(err.toString()).to.equal('ValidationError: child "redis" fails because ["redis" must be an object]');
                 done();
             });
         });
@@ -108,7 +108,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { redis:{ host: null, port: 6379, listname: 'logs' }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: host must be a string');
+                expect(err.toString()).to.equal('ValidationError: child "redis" fails because [child "host" fails because ["host" must be a string]]');
                 done();
             });
         });
@@ -119,7 +119,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { redis:{ host: '', port: 6379, listname: 'logs' }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: host is not allowed to be empty');
+                expect(err.toString()).to.equal('ValidationError: child "redis" fails because [child "host" fails because ["host" is not allowed to be empty]]');
                 done();
             });
         });
@@ -130,7 +130,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { redis:{ host: '127.0.0.1', port: null, listname: 'logs' }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: port must be a number');
+                expect(err.toString()).to.equal('ValidationError: child "redis" fails because [child "port" fails because ["port" must be a number]]');
                 done();
             });
         });
@@ -141,7 +141,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { redis:{ host: '127.0.0.1', port: 'abc', listname: 'logs' }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: port must be a number');
+                expect(err.toString()).to.equal('ValidationError: child "redis" fails because [child "port" fails because ["port" must be a number]]');
                 done();
             });
         });
@@ -152,7 +152,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { redis:{ host: '127.0.0.1', port: 6379, listname: null }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: listname must be a string');
+                expect(err.toString()).to.equal('ValidationError: child "redis" fails because [child "listname" fails because ["listname" must be a string]]');
                 done();
             });
         });
@@ -163,7 +163,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { redis:{ host: '127.0.0.1', port: 6379, listname: '' }}, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: listname is not allowed to be empty');
+                expect(err.toString()).to.equal('ValidationError: child "redis" fails because [child "listname" fails because ["listname" is not allowed to be empty]]');
                 done();
             });
         });
@@ -174,7 +174,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { console: 'invalid' }, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: console must be a boolean');
+                expect(err.toString()).to.equal('ValidationError: child "console" fails because ["console" must be a boolean]');
                 done();
             });
         });
@@ -185,7 +185,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { payload: 'invalid' }, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: payload must be a boolean');
+                expect(err.toString()).to.equal('ValidationError: child "payload" fails because ["payload" must be a boolean]');
                 done();
             });
         });
@@ -196,7 +196,7 @@ describe('plugin (option validation)', function() {
             var config = hoek.applyToDefaults(validConfig, { validate: 'invalid' }, true);
 
             plugin.register(server, config, function(err) {
-                expect(err.toString()).to.equal('ValidationError: validate must be a Function');
+                expect(err.toString()).to.equal('ValidationError: child "validate" fails because ["validate" must be a Function]');
                 done();
             });
         });
