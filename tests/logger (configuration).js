@@ -19,11 +19,11 @@ describe('logger (configuration)', function() {
         });
 
         it('should connect to host 127.0.0.1', function() {
-            expect(redisClient.connectionOption.host).to.equal('127.0.0.1');
+            expect(redisClient.options.host).to.equal('127.0.0.1');
         });
 
         it('should connect to port 6379', function() {
-            expect(redisClient.connectionOption.port).to.equal(6379);
+            expect(redisClient.options.port).to.equal(6379);
         });
 
         it('should connect with offline queue set to disabled', function() {
@@ -94,11 +94,11 @@ describe('logger (configuration)', function() {
         });
 
         it('should connect to host 192.168.0.1', function() {
-            expect(redisClient.connectionOption.host).to.equal('192.168.0.1');
+            expect(redisClient.options.host).to.equal('192.168.0.1');
         });
 
         it('should connect to port 1234', function() {
-            expect(redisClient.connectionOption.port).to.equal(1234);
+            expect(redisClient.options.port).to.equal(1234);
         });
 
         it('should connect with offline queue set to disabled', function() {
