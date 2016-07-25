@@ -1,9 +1,9 @@
 # hapi-ot-logger
 > OpenTable standard-compliant logging plugin for Hapi.
 
-[![Build Status](https://travis-ci.org/opentable/hapi-ot-logger.svg?branch=master)](https://travis-ci.org/opentable/hapi-ot-logger) 
-[![Dependency Status](https://david-dm.org/opentable/hapi-ot-logger.svg)](https://david-dm.org/opentable/hapi-ot-logger) 
-[![devDependency Status](https://david-dm.org/opentable/hapi-ot-logger/dev-status.svg)](https://david-dm.org/opentable/hapi-ot-logger#info=devDependencies) 
+[![Build Status](https://travis-ci.org/opentable/hapi-ot-logger.svg?branch=master)](https://travis-ci.org/opentable/hapi-ot-logger)
+[![Dependency Status](https://david-dm.org/opentable/hapi-ot-logger.svg)](https://david-dm.org/opentable/hapi-ot-logger)
+[![devDependency Status](https://david-dm.org/opentable/hapi-ot-logger/dev-status.svg)](https://david-dm.org/opentable/hapi-ot-logger#info=devDependencies)
 [![npm version](https://badge.fury.io/js/hapi-ot-logger.svg)](https://badge.fury.io/js/hapi-ot-logger)
 
 ## Usage
@@ -34,6 +34,9 @@ server.register([
           payload: false,
           validate: function(log) {
             return log.logname === 'request' && log.headers['user-agent'] !== 'noisy-spider';
+          },
+          preSend: function(req, log) {
+            log.customAttribute = req.context.someAttribute;
           }
         }
     }
@@ -59,7 +62,10 @@ server.register([
 - **console** - *(optional)* enable console output for debugging
 - **payload** - *(optional)* include request payload
 - **validate** - *(optional)* validates that a message should be logged
+- **preSend** - *(optional)* enables modification of log message
 
 ## Release History
+- **v3.1.0** (1026-07-XX)
+    - added optional `preSend(req, log)` function to enable modification of log message
 - **v3.0.0** (2015-11-14)
     - ???

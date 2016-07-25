@@ -201,4 +201,15 @@ describe('plugin (option validation)', function() {
             });
         });
     });
+
+    describe('given invalid preSend', function() {
+        it('should return error', function(done) {
+            var config = hoek.applyToDefaults(validConfig, { preSend: 'invalid' }, true);
+
+            plugin.register(server, config, function(err) {
+                expect(err.toString()).to.equal('ValidationError: preSend must be a Function');
+                done();
+            });
+        });
+    });
 });

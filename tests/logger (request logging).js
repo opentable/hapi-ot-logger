@@ -16,7 +16,10 @@ describe('logger (request logging)', function() {
 
             logger.config({
                 console: true,
-                payload: true
+                payload: true,
+                preSend: function(req, log) {
+                    log.meta = { key: 'value' };
+                }
             }, function() {
                 cfg = logger.__get__("cfg");
 

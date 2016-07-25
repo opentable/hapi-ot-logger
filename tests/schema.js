@@ -29,7 +29,10 @@ module.exports.request = joi.object({
     "ot-referringhost": joi.string().valid("oc").required(),
     "ot-referringservice": joi.string().valid("listing").required(),
     "accept-language": joi.string().valid("en-US, *").required(),
-    headers: joi.object().required()
+    headers: joi.object().required(),
+    meta: joi.object().keys({
+        key: 'value'
+    }).required()
 });
 
 module.exports.log = joi.object({
