@@ -1,9 +1,10 @@
 # hapi-ot-logger
 > OpenTable standard-compliant logging plugin for Hapi.
 
-[![Build Status](https://travis-ci.org/opentable/hapi-ot-logger.png?branch=master)](https://travis-ci.org/opentable/hapi-ot-logger) [![Dependency Status](https://david-dm.org/opentable/hapi-ot-logger.svg)](https://david-dm.org/opentable/hapi-ot-logger) [![NPM version](https://badge.fury.io/js/hapi-ot-logger.png)](http://badge.fury.io/js/hapi-ot-logger)
-
-[![NPM](https://nodei.co/npm/hapi-ot-logger.png?downloads=true&stars=true)](https://nodei.co/npm/hapi-ot-logger)
+[![Build Status](https://travis-ci.org/opentable/hapi-ot-logger.svg?branch=master)](https://travis-ci.org/opentable/hapi-ot-logger) 
+[![Dependency Status](https://david-dm.org/opentable/hapi-ot-logger.svg)](https://david-dm.org/opentable/hapi-ot-logger) 
+[![devDependency Status](https://david-dm.org/opentable/hapi-ot-logger/dev-status.svg)](https://david-dm.org/opentable/hapi-ot-logger#info=devDependencies) 
+[![npm version](https://badge.fury.io/js/hapi-ot-logger.svg)](https://badge.fury.io/js/hapi-ot-logger)
 
 ## Usage
 ```
