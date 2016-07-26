@@ -61,6 +61,14 @@ describe('logger (configuration)', function() {
         it('should set host to OS hostname', function() {
             expect(cfg.host).to.equal(os.hostname());
         });
+
+        it('should use default validation function', function() {
+            expect(cfg.validate).to.be(undefined);
+        });
+
+        it('should use default pre send function', function() {
+            expect(cfg.preSend).to.be(undefined);
+        });
     });
 
     describe('when configured with overrides', function() {
@@ -143,6 +151,10 @@ describe('logger (configuration)', function() {
 
         it('should set validation function', function() {
             expect(cfg.validate).to.not.be(null);
+        });
+
+        it('should set pre send function', function() {
+            expect(cfg.preSend).to.not.be(null);
         });
     });
 });
