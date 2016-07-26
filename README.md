@@ -7,11 +7,11 @@
 [![npm version](https://badge.fury.io/js/hapi-ot-logger.svg)](https://badge.fury.io/js/hapi-ot-logger)
 
 ## Usage
-```
+```bash
 $ npm i hapi-ot-logger --save
 ```
 
-```
+```javascript
 var server = new (require('hapi').Server)();
 server.connection({ port: 3000 });
 
