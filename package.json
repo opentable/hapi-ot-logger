@@ -1,6 +1,6 @@
 {
   "name": "hapi-ot-logger",
-  "version": "3.2.0-alpha",
+  "version": "3.2.0",
   "description": "logger conforming to ot standards",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "keywords": [
     "hapi"
   ],
-  "author": "Andy Royle <ajroyle@gmail.com>",
+  "author": "Arnold Zokas <arnold.zokas@coderoom.net>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/opentable/hapi-ot-logger/issues"
