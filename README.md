@@ -65,7 +65,7 @@ server.register([
 - **preSend** - *(optional)* enables modification of log message
 
 ## Release History
-- **v3.1.0** (1026-07-XX)
+- **v3.2.0** (2016-08-18)
     - added optional `preSend(req, log)` function to enable modification of log message
-- **v3.0.0** (2015-11-14)
+- **v3.1.0** (2015-11-14)
     - ???
