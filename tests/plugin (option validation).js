@@ -25,7 +25,7 @@ var validConfig = {
     }
 };
 
-describe('plugin (option validation)', function() {
+describe.skip('plugin (option validation)', function() {
     describe('given null servicetype', function() {
         it('should return error', function(done) {
             var config = hoek.applyToDefaults(validConfig, { servicetype: null }, true);
