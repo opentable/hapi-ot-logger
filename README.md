@@ -65,6 +65,8 @@ server.register([
 - **preSend** - *(optional)* enables modification of log message
 
 ## Release History
+- **v3.2.1** (2016-08-19)
+    - disable plugin option validation as it is a breaking change
 - **v3.2.0** (2016-08-18)
     - added optional `preSend(req, log)` function to enable modification of log message
 - **v3.1.0** (2015-11-14)
