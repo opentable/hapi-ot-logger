@@ -44,7 +44,7 @@ module.exports.log = joi.object({
     host: joi.string().required(),
     sequencenumber: joi.number().integer().min(0).required(),
     data: joi.object().required(),
-    tags: joi.array().includes(joi.string()).required()
+    tags: joi.array().allow(joi.string()).required()
 });
 
 module.exports.error = joi.object({
