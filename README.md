@@ -1,4 +1,4 @@
-# hapi-ot-logger
+# [DEPRECATED] hapi-ot-logger
 > OpenTable standard-compliant logging plugin for Hapi.
 
 [![Build Status](https://travis-ci.org/opentable/hapi-ot-logger.svg?branch=master)](https://travis-ci.org/opentable/hapi-ot-logger)
