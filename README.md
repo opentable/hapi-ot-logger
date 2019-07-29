@@ -65,6 +65,8 @@ server.register([
 - **preSend** - *(optional)* enables modification of log message
 
 ## Release History
+- **v3.2.2** (2019-07-29)
+    - update packages
 - **v3.2.1** (2016-08-19)
     - disable plugin option validation as it is a breaking change
 - **v3.2.0** (2016-08-18)
